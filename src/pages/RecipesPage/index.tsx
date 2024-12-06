@@ -6,12 +6,12 @@ import ChocolateChipCookies from '../../assets/chocolateChipCookies.jpg';
 import Header from '../../containers/Header';
 import Filter from '../../containers/Filter';
 import ModalDetail from '../../containers/ModalDetail';
-import { ReceipeType } from '../../types/recipe';
+import { RecipeType } from '../../types/recipe';
 import RecipeList from '../../containers/RecipeList';
 
 const RecipesPage: React.FC = () => {
 
-  const mockData: ReceipeType[] = React.useMemo(() => [
+  const mockData: RecipeType[] = React.useMemo(() => [
       {
           title: 'Spaghetti Carbonara',
           description: 'A classic Italian pasta dish with a creamy sauce.',
@@ -73,14 +73,14 @@ const RecipesPage: React.FC = () => {
     return Array.from(ingredientsSet);
   }, [mockData])
 
-  const [filteredData, setFilteredData] = useState<ReceipeType[]>(mockData);
+  const [filteredData, setFilteredData] = useState<RecipeType[]>(mockData);
   const [selectedRecipe, setSelectedRecipe] = useState<any>(null);
   const [favorites, setFavorites] = useState<string[]>(() => {
     const savedFavorites = localStorage.getItem('favorites');
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
-  const handleCardClick = (recipe: ReceipeType) => {
+  const handleCardClick = (recipe: RecipeType) => {
     setSelectedRecipe(recipe);
   };
 

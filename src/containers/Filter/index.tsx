@@ -1,13 +1,13 @@
 import { Col, Row, Select } from 'antd';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { ReceipeType } from '../../types/recipe';
+import { RecipeType } from '../../types/recipe';
 const { Option } = Select;
 
 type FilterProps = {
   recipeIngredients: string[],
-  mockData: ReceipeType[],
-  filteredData: ReceipeType[],
-  setFilteredData: Dispatch<SetStateAction<ReceipeType[]>>
+  mockData: RecipeType[],
+  filteredData: RecipeType[],
+  setFilteredData: Dispatch<SetStateAction<RecipeType[]>>
 }
 
 const Filter: React.FC<FilterProps> = ({recipeIngredients, mockData, filteredData, setFilteredData}) => {

@@ -2,14 +2,14 @@ import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import { Button, Col, Divider, Modal, Row, Typography } from 'antd';
 import React from 'react';
 import { capitalizeFirstLetter } from '../../formatter';
-import { ReceipeType } from '../../types/recipe';
+import { RecipeType } from '../../types/recipe';
 
 const { Title, Paragraph, Text } = Typography;
 
 type ModalDetailProps = {
   handleModalClose: VoidFunction,
   favorites: String[],
-  selectedRecipe: ReceipeType,
+  selectedRecipe: RecipeType,
   toggleFavorite: (title: string) => void
 }
 const ModalDetail: React.FC<ModalDetailProps> = ({handleModalClose, favorites, selectedRecipe, toggleFavorite}) => {

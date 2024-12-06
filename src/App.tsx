@@ -5,7 +5,7 @@ import RecipesPage from './pages/RecipesPage';
 import FavoritesPage from './pages/FavoritesPage';
 import { ConfigProvider, theme } from 'antd';
 import { useDarkMode } from './contexts/DarkModeContext';
-
+import { RecipeProvider } from './contexts/RecipeContext'
 function App() {
 
   const { isDarkMode } = useDarkMode();
@@ -14,12 +14,14 @@ function App() {
 
   return (
     <ConfigProvider theme={{ algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm }}>
-      <Router>
-        <Routes>
-          <Route path="/" Component={RecipesPage} />
-          <Route path="/favorites" Component={FavoritesPage} />
-        </Routes>
-      </Router>
+      <RecipeProvider>
+        <Router>
+          <Routes>
+            <Route path="/" Component={RecipesPage} />
+            <Route path="/favorites" Component={FavoritesPage} />
+          </Routes>
+        </Router>
+      </RecipeProvider>
     </ConfigProvider>
   );
 }
