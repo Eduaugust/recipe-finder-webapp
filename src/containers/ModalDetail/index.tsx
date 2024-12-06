@@ -8,11 +8,10 @@ const { Title, Paragraph, Text } = Typography;
 
 type ModalDetailProps = {
   handleModalClose: VoidFunction,
-  favorites: String[],
   selectedRecipe: RecipeType,
-  toggleFavorite: (title: string) => void
+  toggleFavorite: (id: string) => void
 }
-const ModalDetail: React.FC<ModalDetailProps> = ({handleModalClose, favorites, selectedRecipe, toggleFavorite}) => {
+const ModalDetail: React.FC<ModalDetailProps> = ({handleModalClose, selectedRecipe, toggleFavorite}) => {
   return (
     <Modal
         title={
@@ -20,7 +19,7 @@ const ModalDetail: React.FC<ModalDetailProps> = ({handleModalClose, favorites, s
       <Button
         type="text"
         className='ml-12 mr-4'
-        icon={favorites.includes(selectedRecipe.title) 
+        icon={selectedRecipe.isFavorite 
           ? <HeartFilled size={24} width={24} className='text-yellow-500 ' /> 
           : <HeartOutlined className='text-yellow-500' />
         }
@@ -43,7 +42,7 @@ const ModalDetail: React.FC<ModalDetailProps> = ({handleModalClose, favorites, s
       <div className="text-center mb-4">
         <img
         alt={selectedRecipe.title}
-        src={selectedRecipe.recipeImage}
+        src={`data:image/jpeg;base64,${selectedRecipe.recipeImage}`}
         className="aspect-video rounded-lg shadow-md mb-4 object-cover w-[90%] mx-auto"
         />
       </div>

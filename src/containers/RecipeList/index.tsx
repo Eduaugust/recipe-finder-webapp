@@ -8,11 +8,11 @@ const { Paragraph } = Typography;
 type RecipeListType = {
   filteredData: RecipeType[],
   handleCardClick: (recipe: RecipeType) => void,
-  favorites: string[],
-  toggleFavorite: (title: string, event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+  toggleFavorite: (id: string, event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
 }
 
-const RecipeList: React.FC<RecipeListType> = ({filteredData, handleCardClick, favorites, toggleFavorite}) => {
+const RecipeList: React.FC<RecipeListType> = ({filteredData, handleCardClick, toggleFavorite}) => {
+
   return (
     <>
     {filteredData.length > 0 
@@ -21,14 +21,14 @@ const RecipeList: React.FC<RecipeListType> = ({filteredData, handleCardClick, fa
         <Col span={24} sm={filteredData.length > 1 ? 12 : 24} lg={filteredData.length === 2 ? 12 : filteredData.length > 1 ? 8 : 24 } key={index}>
           <Card
             hoverable
-            cover={<img alt={recipe.title} src={recipe.recipeImage} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />}
+            cover={<img alt={recipe.title} src={`data:image/jpeg;base64,${recipe.recipeImage}`} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />}
             onClick={() => handleCardClick(recipe)}
             style={{ height: '100%' }}
             title={recipe.title}
             extra={[
-          favorites.includes(recipe.title) ? 
-          <HeartFilled className='text-yellow-500' onClick={(event) => toggleFavorite(recipe.title, event)} /> : 
-          <HeartOutlined className='text-yellow-500' onClick={(event) => toggleFavorite(recipe.title, event)} />
+              recipe.isFavorite ? 
+          <HeartFilled className='text-yellow-500' onClick={(event) => toggleFavorite(recipe.id ?? '', event)} /> : 
+          <HeartOutlined className='text-yellow-500' onClick={(event) => toggleFavorite(recipe.id ?? '', event)} />
             ]}
           >
             <Card.Meta 

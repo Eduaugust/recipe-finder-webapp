@@ -14,10 +14,19 @@ const Header: React.FC = () => {
         <Typography.Paragraph className="text-lg">Discover and save your favorite recipes from a wide variety of cuisines</Typography.Paragraph>
       </Col>
       <Col span={8} className="flex mt-4 justify-end">
-        <Typography className='cursor-pointer pt-1 pr-2' onClick={() => navigate(window.location.pathname === '/' ? '/favorites' : '/')}>
-          {window.location.pathname === '/' ? 'Go to Favorites' : 'Go to Recipes'}
-        </Typography>
-        <DarkModeButton />
+        <Row>
+          <Col span={24} md={12} className='flex justify-end  pr-4'>
+            <Typography 
+              className='cursor-pointer pt-1 whitespace-nowrap hover:text-slate-500' 
+              onClick={() => navigate(window.location.pathname === '/' ? '/favorites' : '/')}
+            >
+              {window.location.pathname === '/' ? 'Go to Favorites' : 'Go to Recipes'}
+            </Typography>
+          </Col>
+          <Col span={24} md={12} className='flex justify-end pl-2'>
+            <DarkModeButton />
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

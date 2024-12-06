@@ -58,7 +58,6 @@ const Filter: React.FC<FilterProps> = ({recipeIngredients, mockData, filteredDat
       );
     }
     setFilteredData(sortRecipes(filtered, sortOrder));
-    console.log(filtered);
   };
 
 
@@ -68,7 +67,7 @@ const Filter: React.FC<FilterProps> = ({recipeIngredients, mockData, filteredDat
         <Select
           mode="multiple"
           allowClear
-          className="flex"
+          className="flex mt-2"
           onSearch={handleSearch}
           onChange={handleChange}
           placeholder="Search recipes"
@@ -82,7 +81,7 @@ const Filter: React.FC<FilterProps> = ({recipeIngredients, mockData, filteredDat
           ))}
         </Select>
       </Col>
-      <Col span={24} md={{span: 6, offset: 2}} className="flex mb-4 justify-end">
+      <Col span={24} md={{span: 6, offset: 2}} className="flex mb-4 justify-end mt-2">
         <Select
           placeholder="Sort by"
           onChange={handleSortChange}
